@@ -1,6 +1,7 @@
 # readme
 ## overview
 In this project, following documents should be submitted: 
+
   1) a tidy data set as described below, 
   
   2) a link to a Github repository with script for performing the analysis, 
