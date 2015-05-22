@@ -8,10 +8,13 @@ In this project, following documents should be submitted:
   
 ## manual
   1) use source() function to start run_analysis.R
+  
   2) if user didn't install "reshape2"" package beforehand, the following message would be shown:
      the 'reshape2' package is required
      user can adopt install.packages("reshape2") and run script again.
+     
   3) if the directory "getdata_projectfiles_UCI HAR Dataset" didn't exist in user's current directory, the following message would be shown:
       The directory which includes required data, named 'getdata_projectfiles_UCI HAR Dataset', is required!
      user can change to the right directory and run script again.
+     
   4) after running, one .txt file, named 'Project.txt', will be created in current directory, which includes the final tidy data.
