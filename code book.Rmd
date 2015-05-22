@@ -1,0 +1,107 @@
+# code book for run analysis
+## overview
+* goal: analyze the data from  data collected from the accelerometers from the Samsung Galaxy S smartphone.
+* basic methods: 
+  * merge the data from test group and trainning group 
+  * correct the names of variables 
+  * calculate the average of each mean and standard deviation data for each activity and each subject
+* tools: R with package "reshape2"
+
+## raw data
+* https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+
+##introduction of raw data
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See 'features_info.txt' for more details.
+
+## selected raw data for analysis
+* "features_info.txt" - introduction of names of data
+* "features.txt" - names of data
+* "activity_labels.txt" - introfuction of labels and their code
+* "train/X_train.txt" - data of trainning
+* "train/y_train.txt" - labels of trainning
+* "train/subject_train.txt" - subjects of trainning 
+* "test/X_test.txt" - data of test
+* "test/y_test.txt" - labels of test
+* "test/subject_test.txt" - subjects of test
+
+## 68 variables in final data set (Project.txt)
+* "Label" - the six actions in experiment
+   1 WALKING
+   2 WALKING_UPSTAIRS
+   3 WALKING_DOWNSTAIRS
+   4 SITTING
+   5 STANDING
+   6 LAYING
+* "subject" - Each row identifies the subject who performed the activity for each window sample. 
+   Its range is from 1 to 30.
+* "tBodyAcc-mean()-X" ,"tBodyAcc-mean()-Y", "tBodyAcc-mean()-Z" - the average value of mean of triaxial body acceleration for each activity and each subject
+   180 objects for each dimension
+* "tGravityAcc-mean()-X", "tGravityAcc-mean()-Y", "tGravityAcc-mean()-Z" - the average value of mean of triaxial gravity acceleration for each activity and each subject
+   180 objects for each dimension 
+* "tBodyAccJerk-mean()-X", "tBodyAccJerk-mean()-Y", "tBodyAccJerk-mean()-Z" - the average value of mean of triaxial body acceleration (Jerk signals) for each activity and each subject
+   180 objects for each dimension
+* "tBodyGyro-mean()-X", "tBodyGyro-mean()-Y", "tBodyGyro-mean()-Z" - the average value of mean of triaxial angular velocity for each activity and each subject
+   180 objects for each dimension
+* "tBodyGyroJerk-mean()-X", "tBodyGyroJerk-mean()-Y", "tBodyGyroJerk-mean()-Z" - the average value of mean of triaxial angular velocity (Jerk signals) for each activity and each subject
+   180 objects for each dimension
+* "tBodyAccMag-mean()" - the average value of mean of body acceleration (the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "tGravityAccMag-mean()"- the average value of mean of gravity acceleration (the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "tBodyAccJerkMag-mean()"- the average value of mean of body acceleration (Jerk signals and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "tBodyGyroMag-mean()"- the average value of mean of angular velocity (the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "tBodyGyroJerkMag-mean()"- the average value of mean of angular velocity (Jerk signals and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "fBodyAcc-mean()-X", "fBodyAcc-mean()-Y", "fBodyAcc-mean()-Z"- the average value of mean of triaxial body acceleration (Fast Fourier Transform) for each activity and each subject
+   180 objects for each dimension
+* "fBodyAccJerk-mean()-X", "fBodyAccJerk-mean()-Y", "fBodyAccJerk-mean()-Z"- the average value of mean of triaxial body acceleration (Jerk signals and Fast Fourier Transform) for each activity and each subject
+   180 objects for each dimension
+* "fBodyGyro-mean()-X", "fBodyGyro-mean()-Y", "fBodyGyro-mean()-Z"- the average value of mean of triaxial angular velocity (Fast Fourier Transform) for each activity and each subject
+   180 objects for each dimension
+* "fBodyAccMag-mean()"- the average value of mean of triaxial body acceleration (Fast Fourier Transform and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "fBodyBodyAccJerkMag-mean()" - the average value of mean of triaxial body acceleration (Jerk signals and Fast Fourier Transform and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "fBodyBodyGyroMag-mean()" - the average value of mean of triaxial angular velocity (Fast Fourier Transform and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "fBodyBodyGyroJerkMag-mean()" - the average value of mean of triaxial angular velocity (Jerk signals and Fast Fourier Transform and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "tBodyAcc-std()-X", "tBodyAcc-std()-Y", "tBodyAcc-std()-Z" - the average value of standard deviation of triaxial body acceleration for each activity and each subject
+   180 objects for each dimension
+* "tGravityAcc-std()-X", "tGravityAcc-std()-Y", "tGravityAcc-std()-Z" - the average value of standard deviation of triaxial gravity acceleration for each activity and each subject
+   180 objects for each dimension
+* "tBodyAccJerk-std()-X", "tBodyAccJerk-std()-Y", "tBodyAccJerk-std()-Z" - the average value of standard deviation of triaxial body acceleration (Jerk signals) for each activity and each subject
+   180 objects for each dimension
+* "tBodyGyro-std()-X", "tBodyGyro-std()-Y", "tBodyGyro-std()-Z" - the average value of standard deviation of triaxial angular velocity for each activity and each subject
+   180 objects for each dimension
+* "tBodyGyroJerk-std()-X", "tBodyGyroJerk-std()-Y", "tBodyGyroJerk-std()-Z" - the average value of standard deviation of triaxial angular velocity (Jerk signals) for each activity and each subject
+   180 objects for each dimension
+* "tBodyAccMag-std()" - the average value of standard deviation of body acceleration (the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "tGravityAccMag-std()" - the average value of standard deviation of gravity acceleration (the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "tBodyAccJerkMag-std()" - the average value of standard deviation of body acceleration (Jerk signals and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "tBodyGyroMag-std()" - the average value of standard deviation of angular velocity (the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "tBodyGyroJerkMag-std()" - the average value of standard deviation of angular velocity (Jerk signals and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "fBodyAcc-std()-X", "fBodyAcc-std()-Y", "fBodyAcc-std()-Z" - the average value of standard deviation of triaxial body acceleration (Fast Fourier Transform) for each activity and each subject
+   180 objects for each dimension
+* "fBodyAccJerk-std()-X", "fBodyAccJerk-std()-Y", "fBodyAccJerk-std()-Z" - the average value of standard deviation of triaxial body acceleration (Jerk signals and Fast Fourier Transform) for each activity and each subject
+   180 objects for each dimension
+* "fBodyGyro-std()-X", "fBodyGyro-std()-Y", "fBodyGyro-std()-Z" - the average value of standard deviation of triaxial angular velocity (Fast Fourier Transform) for each activity and each subject
+   180 objects for each dimension
+* "fBodyAccMag-std()" - the average value of standard deviation of angular velocity (the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "fBodyBodyAccJerkMag-std()" - the average value of standard deviation of body acceleration (Jerk signals and Fast Fourier Transform and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "fBodyBodyGyroMag-std()" - the average value of standard deviation of angular velocity (Fast Fourier Transform and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+* "fBodyBodyGyroJerkMag-std()" - the average value of standard deviation of angular velocity (Jerk signals and Fast Fourier Transform and the Euclidean norm) for each activity and each subject
+   180 objects for each dimension
+   

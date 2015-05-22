@@ -1,0 +1,17 @@
+# readme
+## overview
+In this project, following documents should be submitted: 
+  1) a tidy data set as described below, 
+  2) a link to a Github repository with script for performing the analysis, 
+  3) a code book that describes the variables, the data, and any transformations or work called CodeBook.md. 
+  4) README.md in the repo with scripts is required explaining how all of the scripts work and how they are connected.
+  
+## manual
+  1) use source() function to start run_analysis.R
+  2) if user didn't install "reshape2"" package beforehand, the following message would be shown:
+     the 'reshape2' package is required
+     user can adopt install.packages("reshape2") and run script again.
+  3) if the directory "getdata_projectfiles_UCI HAR Dataset" didn't exist in user's current directory, the following message would be shown:
+      The directory which includes required data, named 'getdata_projectfiles_UCI HAR Dataset', is required!
+     user can change to the right directory and run script again.
+  4) after running, one .txt file, named 'Project.txt', will be created in current directory, which includes the final tidy data.
